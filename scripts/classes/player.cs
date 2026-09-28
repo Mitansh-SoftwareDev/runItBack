@@ -2,13 +2,17 @@
 
 namespace RunItBack;
 
-public partial class player: CharacterBody2D
+public partial class player : CharacterBody2D
 {
     public const float Speed = 200.0f;
     public const float JumpVelocity = -300.0f;
+    
+    [Export]
+    public int playerHealth = 10;
 
-    public override void _PhysicsProcess(double delta)
+public override void _PhysicsProcess(double delta)
     {
+        
         Vector2 velocity = Velocity;
 
         // Add the gravity.

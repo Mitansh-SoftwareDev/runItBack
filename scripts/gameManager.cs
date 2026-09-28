@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
+namespace RunItBack;
+
 public partial class gameManager : Node
 {
-    [Export]
-    public int playerHealth = 10;
     [Export]
     public int enemyHealth = 8;
     [Export]
