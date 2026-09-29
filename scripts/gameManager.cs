@@ -5,6 +5,9 @@ namespace RunItBack;
 
 public partial class gameManager : Node
 {
+    
+    public player _player;
+
     [Export]
     public int enemyHealth = 8;
     [Export]
@@ -15,4 +18,14 @@ public partial class gameManager : Node
     public int balance = 0;
     [Export]
     public int score = 0;
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (!alive)
+        {
+            _player.playerHealth = 10;
+            GD.Print(_player.playerHealth);
+        }
+    }
 }
+

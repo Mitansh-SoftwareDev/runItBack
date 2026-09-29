@@ -2,14 +2,23 @@
 
 namespace RunItBack;
 
-public partial class player : CharacterBody2D
+public abstract partial class player : CharacterBody2D
 {
     public const float Speed = 200.0f;
     public const float JumpVelocity = -300.0f;
+    public Vector2 spawn_point;
     
     [Export]
     public int playerHealth = 10;
 
+    public gameManager _gamemanager;
+
+    public override void _Ready()
+    {
+        _gamemanager = (gameManager)GetNode("/root/gameManager");
+        _gamemanager._player = this;
+    }
+    
 public override void _PhysicsProcess(double delta)
     {
         
@@ -65,8 +74,13 @@ public override void _PhysicsProcess(double delta)
 
         Velocity = velocity;
         MoveAndSlide();
+        
+        if (playerHealth <= 0)
+        {
+            Position = spawn_point;
+            _gamemanager.alive = false;
+        }
     }
 
-        
 
 }

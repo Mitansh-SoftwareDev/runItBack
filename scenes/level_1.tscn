@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://qa3velbnen1e" path="res://assets/Background/Additional Sky.png" id="3_pa8r4"]
 [ext_resource type="Texture2D" uid="uid://bmxdjh20vp0me" path="res://assets/Background/Big Clouds.png" id="4_15mv3"]
 [ext_resource type="PackedScene" uid="uid://bm8d3iscg4iw2" path="res://scenes/frog.tscn" id="5_e3sih"]
+[ext_resource type="PackedScene" uid="uid://bgkg3btj3nn27" path="res://scenes/checkpoint.tscn" id="6_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://1ay262busx05" path="res://scenes/kill_zone.tscn" id="7_pa8r4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbghi"]
 texture = ExtResource("1_4nkto")
@@ -730,3 +732,8 @@ tile_set = SubResource("TileSet_hbghi")
 
 [node name="frog" parent="." unique_id=195539482 instance=ExtResource("5_e3sih")]
 position = Vector2(48, -29)
+
+[node name="Checkpoint" parent="." unique_id=1682679578 instance=ExtResource("6_fcfvj")]
+position = Vector2(22, -24)
+
+[node name="killZone" parent="." unique_id=1490842640 instance=ExtResource("7_pa8r4")]
