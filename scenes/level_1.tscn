@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://omi7qc0uyer7"]
+[gd_scene format=4 uid="uid://cjpb675osjg5r"]
 
 [ext_resource type="Texture2D" uid="uid://b67v2yx5ojqxo" path="res://assets/PixelAdventure/Terrain/Terrain (16x16).png" id="1_4nkto"]
 [ext_resource type="Texture2D" uid="uid://dfndcna3kijpm" path="res://assets/Background/BG Image.png" id="2_fcfvj"]
@@ -730,4 +730,3 @@ tile_set = SubResource("TileSet_hbghi")
 
 [node name="frog" parent="." unique_id=195539482 instance=ExtResource("5_e3sih")]
 position = Vector2(48, -29)
-collision_layer = 2

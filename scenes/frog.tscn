@@ -352,6 +352,7 @@ animations = [{
 height = 26.0
 
 [node name="frog" type="CharacterBody2D" unique_id=195539482]
+collision_layer = 2
 script = ExtResource("1_ycnbg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2005156328]
@@ -363,4 +364,5 @@ autoplay = "idle"
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_20dwi")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=413912944]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1720247117]
+zoom = Vector2(1.5, 1.5)

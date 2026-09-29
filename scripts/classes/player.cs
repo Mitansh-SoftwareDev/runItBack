@@ -2,13 +2,17 @@
 
 namespace RunItBack;
 
-public partial class player: CharacterBody2D
+public partial class player : CharacterBody2D
 {
     public const float Speed = 200.0f;
     public const float JumpVelocity = -300.0f;
+    
+    [Export]
+    public int playerHealth = 10;
 
-    public override void _PhysicsProcess(double delta)
+public override void _PhysicsProcess(double delta)
     {
+        
         Vector2 velocity = Velocity;
 
         // Add the gravity.
@@ -18,13 +22,13 @@ public partial class player: CharacterBody2D
         }
         
         // Handle Animations.
-        if (velocity.Y < 0)
-        {
-            GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("jump");
-        }
-        else if (velocity.Y > 0 && !IsOnFloor())
+        if (Velocity.Y > 0)
         {
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("fall");
+        }
+        if (Velocity.Y < 0)
+        {
+        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("jump");
         }
         else if (Input.IsActionJustPressed("left"))
         {
@@ -36,18 +40,9 @@ public partial class player: CharacterBody2D
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("run");
         }
-        else if (Velocity.X == 0)
+        else if (velocity.Y == 0 & velocity.X == 0)
         {
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
-        }
-
-        if (Input.IsActionJustPressed("left"))
-        {
-            GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
-        }
-        else if (Input.IsActionJustPressed("right"))
-        {
-            GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
         }
 
         // Handle Jump.
@@ -71,4 +66,7 @@ public partial class player: CharacterBody2D
         Velocity = velocity;
         MoveAndSlide();
     }
+
+        
+
 }
