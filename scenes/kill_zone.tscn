@@ -10,13 +10,13 @@ size = Vector2(2242, 120)
 script = ExtResource("1_kebdr")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=71315557]
-collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=690599347]
 position = Vector2(192, 50)
 shape = SubResource("RectangleShape2D_wxm5j")
 
 [node name="frog" parent="." unique_id=195539482 instance=ExtResource("2_l4ff3")]
-position = Vector2(34, -668)
+position = Vector2(28, -919)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="playerEnter"]
