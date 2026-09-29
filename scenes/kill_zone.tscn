@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://1ay262busx05"]
+
+[ext_resource type="Script" uid="uid://b4t7yfkvnckfb" path="res://killZone.cs" id="1_kebdr"]
+[ext_resource type="PackedScene" uid="uid://bm8d3iscg4iw2" path="res://scenes/frog.tscn" id="2_l4ff3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxm5j"]
+size = Vector2(2242, 120)
+
+[node name="killZone" type="Node" unique_id=1490842640]
+script = ExtResource("1_kebdr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=71315557]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=690599347]
+position = Vector2(192, 50)
+shape = SubResource("RectangleShape2D_wxm5j")
+
+[node name="frog" parent="." unique_id=195539482 instance=ExtResource("2_l4ff3")]
+position = Vector2(28, -919)
+
+[connection signal="body_entered" from="Area2D" to="." method="playerEnter"]
