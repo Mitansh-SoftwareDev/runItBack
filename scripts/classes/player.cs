@@ -13,13 +13,20 @@ public abstract partial class player : CharacterBody2D
 
     public gameManager _gamemanager;
 
+    private AnimatedSprite2D _animatedSprite;
+
     public override void _Ready()
     {
-        _gamemanager = (gameManager)GetNode("/root/gameManager");
+        _gamemanager = GetNode<gameManager>("/root/GameManager");
         _gamemanager._player = this;
+
+        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+        // Set the initial spawn point
+        spawn_point = GlobalPosition;
     }
     
-public override void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         
         Vector2 velocity = Velocity;
@@ -31,25 +38,25 @@ public override void _PhysicsProcess(double delta)
         }
         
         // Handle Animations.
-        if (Velocity.Y > 0)
+        if (Velocity.Y > 0 && !IsOnFloor())
         {
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("fall");
         }
-        if (Velocity.Y < 0)
+        else if (Velocity.Y < 0 && !IsOnFloor())
         {
-        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("jump");
+            GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("jump");
         }
-        else if (Input.IsActionJustPressed("left"))
+        else if (Velocity.X < 0)
         {
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("run");
         }
-        else if (Input.IsActionJustPressed("right"))
+        else if (Velocity.X > 0)
         {
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("run");
         }
-        else if (velocity.Y == 0 & velocity.X == 0)
+        else
         {
             GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("idle");
         }
@@ -69,18 +76,25 @@ public override void _PhysicsProcess(double delta)
         }
         else
         {
-            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+            velocity.X = Mathf.MoveToward(velocity.X, 0, Speed);
         }
 
         Velocity = velocity;
         MoveAndSlide();
         
+        // Handle player death and respawn
         if (playerHealth <= 0)
         {
-            Position = spawn_point;
-            _gamemanager.alive = false;
+            Respawn();
         }
     }
 
+    public void Respawn()
+    {
+        GlobalPosition = spawn_point;
+        playerHealth = 10;
+        Velocity = Vector2.Zero;
 
+        GD.Print("Player respawned!");
+    }
 }

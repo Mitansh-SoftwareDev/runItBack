@@ -12,12 +12,9 @@ config_version=5
 
 config/name="RunItBack"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
-"`[display]window/stretch/mode"="canvas_items"
-window/stretch/aspect="expand"
 GameManager="*uid://bfaao0xnx521h"
 
 [display]

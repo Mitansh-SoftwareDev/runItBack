@@ -734,6 +734,7 @@ tile_set = SubResource("TileSet_hbghi")
 position = Vector2(48, -29)
 
 [node name="Checkpoint" parent="." unique_id=1682679578 instance=ExtResource("6_fcfvj")]
-position = Vector2(22, -24)
+position = Vector2(36, -24)
 
 [node name="killZone" parent="." unique_id=1490842640 instance=ExtResource("7_pa8r4")]
+position = Vector2(0, 366)
