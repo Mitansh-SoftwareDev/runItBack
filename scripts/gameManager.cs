@@ -4,8 +4,9 @@ namespace RunItBack;
 
 public partial class gameManager : Node
 {
+	[Export]
 	public player _player;
-
+	
 	[Export]
 	public int enemyHealth = 8;
 

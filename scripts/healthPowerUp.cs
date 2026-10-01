@@ -4,18 +4,22 @@ using RunItBack;
 
 public partial class healthPowerUp : Node2D
 {
-	public gameManager _gameManager;
+	public gameManager _gamemanager;
 
 	public override void _Ready()
 	{
-		_gameManager = GetNode<gameManager>("/root/gameManager");
+		_gamemanager = GetNode<gameManager>("/root/GameManager");
 	}
 
-	public void healthActivate(Node2D _player)
+	public void healthActivate(Node2D player)
 		{
-			if (_player is player)
+			if (player is player)
 			{
-				_gameManager._player.playerHealth = 15;
+				GD.Print(_gamemanager);
+				GD.Print(_gamemanager._player);
+				GD.Print(_gamemanager._player.playerHealth);
+				_gamemanager._player.playerHealth = 15;
+				
 				GD.Print("health activated - Health Now 15!");
 			}
 		}

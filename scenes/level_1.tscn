@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bm8d3iscg4iw2" path="res://scenes/frog.tscn" id="5_e3sih"]
 [ext_resource type="PackedScene" uid="uid://bgkg3btj3nn27" path="res://scenes/checkpoint.tscn" id="6_fcfvj"]
 [ext_resource type="PackedScene" uid="uid://1ay262busx05" path="res://scenes/kill_zone.tscn" id="7_pa8r4"]
-[ext_resource type="PackedScene" uid="uid://csifxbjxkoh8j" path="res://scenes/enemyMelee.tscn" id="8_15mv3"]
+[ext_resource type="PackedScene" uid="uid://crunygcq674ub" path="res://scenes/healthPowerUp.tscn" id="8_15mv3"]
+[ext_resource type="PackedScene" uid="uid://dgp7dr33nyquo" path="res://scenes/spikes.tscn" id="9_e3sih"]
+[ext_resource type="PackedScene" uid="uid://gw0pse2sfyiu" path="res://scenes/arrow.tscn" id="10_2y5yt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbghi"]
 texture = ExtResource("1_4nkto")
@@ -740,5 +742,11 @@ position = Vector2(36, -31)
 [node name="killZone" parent="." unique_id=1490842640 instance=ExtResource("7_pa8r4")]
 position = Vector2(0, 366)
 
-[node name="enemy" parent="." unique_id=1243108566 instance=ExtResource("8_15mv3")]
-position = Vector2(388, -56)
+[node name="Node2D" parent="." unique_id=1030179981 instance=ExtResource("8_15mv3")]
+position = Vector2(219, -16)
+
+[node name="spikes" parent="." unique_id=63228596 instance=ExtResource("9_e3sih")]
+position = Vector2(314, -23)
+
+[node name="arrow" parent="." unique_id=928812752 instance=ExtResource("10_2y5yt")]
+position = Vector2(373, -47)
