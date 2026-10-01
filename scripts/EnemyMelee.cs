@@ -2,7 +2,7 @@ using Godot;
 using System;
 using RunItBack;
 
-public partial class EnemyArcher : Enemy
+public partial class enemyArcher : enemy
 {
     public RayCast2D rayLeft;
     public RayCast2D rayRight;
@@ -13,10 +13,8 @@ public partial class EnemyArcher : Enemy
         rayRight = GetNode<RayCast2D>("rayRight");
     }
 
-    public override void _Process(double delta)
+    public void _process(double delta)
     {
-        base._Process(delta);
-
         if (rayLeft.IsColliding())
         {
             GD.Print("Ray Left is colliding with: " + rayLeft.GetCollider());

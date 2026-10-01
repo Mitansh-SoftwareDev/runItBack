@@ -2,7 +2,7 @@ using Godot;
 using System;
 using RunItBack;
 
-public partial class enemyArcher : Enemy
+public partial class enemyArcher : enemy
 {
 
 	private bool active = false;

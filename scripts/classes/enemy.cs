@@ -1,36 +1,33 @@
 using Godot;
-
-public partial class Enemy : CharacterBody2D
+public partial class enemy : CharacterBody2D
 {
-	[Export] 
-	public int Health = 4;
-	[Export] 
-	public int Damage = 1;
-	[Export] 
-	public float Speed = 60f;
-	[Export] 
-	public float Gravity = 900f;
+	[ExportGroup("Physics")]
+	[Export] public float Gravity = 980.0f;
+
+	[ExportGroup("Combat")]
+	[Export] public int MaxHealth = 3;
+	[Export] public int ContactDamage = 1;
+	[Export] public float AttackCooldown = 1.0f;
+
+	public int Health;
+	public float CooldownRemaining;
+
 
 	public override void _PhysicsProcess(double delta)
 	{
+		float time = (float)delta;
+		CooldownRemaining -= time;
+		if (CooldownRemaining < 0.0f)
+			CooldownRemaining = 0.0f;
+
 		Vector2 velocity = Velocity;
 
-		if (!IsOnFloor())
-		{
-			velocity.Y += Gravity * (float)delta;
-		}
-
+        // Add the gravity.
+        if (!IsOnFloor())
+        {
+            velocity += GetGravity() * (float)delta;
+        }
 		Velocity = velocity;
 		MoveAndSlide();
-	}
-
-	public void TakeDamage(int amount)
-	{
-		Health -= amount;
-
-		if (Health <= 0)
-		{
-			QueueFree();
-		}
 	}
 }
