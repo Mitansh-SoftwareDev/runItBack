@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csifxbjxkoh8j"]
 
-[ext_resource type="Script" uid="uid://b7qbw3slu2re7" path="res://scripts/EnemyMelee.cs" id="1_6l47g"]
+[ext_resource type="Script" uid="uid://c1nuapxrbhlt2" path="res://scenes/EnemyMelee.cs" id="1_6l47g"]
 [ext_resource type="Texture2D" uid="uid://db3l8sf8arqfx" path="res://assets/PixelAdventure/Main Characters/Mask Dude/Hit (32x32).png" id="1_e0oy5"]
 [ext_resource type="Texture2D" uid="uid://dendlfko8iej8" path="res://assets/PixelAdventure/Main Characters/Mask Dude/Idle (32x32).png" id="2_6l47g"]
 [ext_resource type="Texture2D" uid="uid://cyux3a5geif04" path="res://assets/PixelAdventure/Main Characters/Mask Dude/Run (32x32).png" id="3_u0uwt"]
@@ -225,35 +225,29 @@ height = 42.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqct4"]
 
-[node name="EnemyMelee" type="Node2D" unique_id=1243108566]
+[node name="EnemyMelee" type="CharacterBody2D" unique_id=481062661]
 script = ExtResource("1_6l47g")
-Gravity = null
-MaxHealth = null
-ContactDamage = null
-AttackCooldown = null
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1521286151]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=51666331]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=51666331]
 sprite_frames = SubResource("SpriteFrames_dqct4")
 animation = &"run"
 autoplay = "idle"
 
-[node name="attackColl" type="Area2D" parent="CharacterBody2D" unique_id=1295320362]
+[node name="attackColl" type="Area2D" parent="." unique_id=1295320362]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/attackColl" unique_id=1026648629]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackColl" unique_id=1026648629]
 shape = SubResource("CapsuleShape2D_qh4mu")
 
-[node name="rayLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=1212218844]
+[node name="rayLeft" type="RayCast2D" parent="." unique_id=1212218844]
 exclude_parent = false
 target_position = Vector2(-159, 0)
 collision_mask = 2
 
-[node name="rayRight" type="RayCast2D" parent="CharacterBody2D" unique_id=70823981]
+[node name="rayRight" type="RayCast2D" parent="." unique_id=70823981]
 exclude_parent = false
 target_position = Vector2(159, 0)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1820856944]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1820856944]
 shape = SubResource("CapsuleShape2D_dqct4")
