@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://di5dwg6inu276"]
+
+[ext_resource type="Script" uid="uid://beq8ch2harii3" path="res://scripts/EnemyArcher.cs" id="1_pl3dr"]
+[ext_resource type="Texture2D" uid="uid://dsqcm7mhfawmp" path="res://assets/archer/Attack/Archer attack Sheet.png" id="1_sbs1q"]
+[ext_resource type="Texture2D" uid="uid://cgshwuklp8ju5" path="res://assets/archer/Idle/Archer idle Sheet.png" id="2_pl3dr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juhn7"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(0, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8nja"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(72, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnfgc"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(144, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_624af"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(216, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8r5y"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(288, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6cv5"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(360, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da16i"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(432, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nos1f"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(504, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7lsb"]
+atlas = ExtResource("1_sbs1q")
+region = Rect2(576, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5w30"]
+atlas = ExtResource("2_pl3dr")
+region = Rect2(0, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghnlq"]
+atlas = ExtResource("2_pl3dr")
+region = Rect2(72, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4wam"]
+atlas = ExtResource("2_pl3dr")
+region = Rect2(144, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uln1m"]
+atlas = ExtResource("2_pl3dr")
+region = Rect2(216, 0, 72, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_062y4"]
+atlas = ExtResource("2_pl3dr")
+region = Rect2(288, 0, 72, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqct4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juhn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8nja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnfgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_624af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8r5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6cv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da16i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nos1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7lsb")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5w30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghnlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4wam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uln1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_062y4")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqct4"]
+radius = 179.01117
+
+[node name="enemyArcher" type="Node2D" unique_id=1501147467]
+script = ExtResource("1_pl3dr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=832122164]
+scale = Vector2(1.0833334, 1.1458334)
+sprite_frames = SubResource("SpriteFrames_dqct4")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="detectRadius" type="Area2D" parent="." unique_id=1971800613]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectRadius" unique_id=1816977486]
+shape = SubResource("CircleShape2D_dqct4")
+
+[node name="arrowSpawn" type="Marker2D" parent="." unique_id=1078306590]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=82103939]
+target_position = Vector2(-1, 180)
+collision_mask = 2
+
+[connection signal="body_entered" from="detectRadius" to="." method="_on_detect_radius_body_entered"]
+[connection signal="body_exited" from="detectRadius" to="." method="_on_detect_radius_body_exited"]

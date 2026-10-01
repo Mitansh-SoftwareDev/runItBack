@@ -1,15 +1,19 @@
 using Godot;
+using System;
 using RunItBack;
 
 public partial class killZone : Node2D
 {
-    public void playerEntered(Node2D killing)
-    {
-        if (killing is player targetPlayer)
-        {
-            targetPlayer.playerHealth = 0;
+	public player _player;
+	
+	public void playerEntered(Node2D killing)
+	{
+		if (killing is player)
+		{
+			_player = (player)killing;
+		}
 
-            GD.Print("Player entered KillZone!");
-        }
-    }
+		_player.playerHealth = 0;
+		GD.Print("player entered");
+	}
 }

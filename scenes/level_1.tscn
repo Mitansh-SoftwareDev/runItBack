@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bm8d3iscg4iw2" path="res://scenes/frog.tscn" id="5_e3sih"]
 [ext_resource type="PackedScene" uid="uid://bgkg3btj3nn27" path="res://scenes/checkpoint.tscn" id="6_fcfvj"]
 [ext_resource type="PackedScene" uid="uid://1ay262busx05" path="res://scenes/kill_zone.tscn" id="7_pa8r4"]
+[ext_resource type="PackedScene" uid="uid://csifxbjxkoh8j" path="res://scenes/enemyMelee.tscn" id="8_15mv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbghi"]
 texture = ExtResource("1_4nkto")
@@ -734,7 +735,10 @@ tile_set = SubResource("TileSet_hbghi")
 position = Vector2(48, -29)
 
 [node name="Checkpoint" parent="." unique_id=1682679578 instance=ExtResource("6_fcfvj")]
-position = Vector2(36, -24)
+position = Vector2(36, -31)
 
 [node name="killZone" parent="." unique_id=1490842640 instance=ExtResource("7_pa8r4")]
 position = Vector2(0, 366)
+
+[node name="enemy" parent="." unique_id=1243108566 instance=ExtResource("8_15mv3")]
+position = Vector2(388, -56)
