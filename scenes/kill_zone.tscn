@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b7que6mfo32xp" path="res://scripts/killZone.cs" id="1_l4ff3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxm5j"]
-size = Vector2(2242, 120)
+size = Vector2(2483, 120)
 
 [node name="killZone" type="Node2D" unique_id=345697851]
 script = ExtResource("1_l4ff3")
@@ -12,7 +12,7 @@ script = ExtResource("1_l4ff3")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=690599347]
-position = Vector2(192, 50)
+position = Vector2(312.5, 50)
 shape = SubResource("RectangleShape2D_wxm5j")
 
 [connection signal="body_entered" from="Area2D" to="." method="playerEntered"]

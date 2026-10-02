@@ -21,6 +21,7 @@ public partial class healthPowerUp : Node2D
 				_gamemanager._player.playerHealth = 15;
 				
 				GD.Print("health activated - Health Now 15!");
+				QueueFree();
 			}
 		}
 }

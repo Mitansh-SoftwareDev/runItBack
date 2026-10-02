@@ -8,6 +8,10 @@
 
 config_version=5
 
+[accessibility]
+
+general/updates_per_second=100
+
 [application]
 
 config/name="RunItBack"
@@ -16,12 +20,15 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+gameManager="*uid://bfaao0xnx521h"
 "`[display]window/stretch/mode"="canvas_items"
 window/stretch/aspect="expand"
 GameManager="*uid://bfaao0xnx521h"
 
 [display]
 
+window/size/initial_position_type=3
+window/size/borderless=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
